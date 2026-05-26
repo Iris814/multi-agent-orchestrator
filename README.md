@@ -14,6 +14,16 @@ A user question flows through three tiers:
 - **Orchestrator** — five specialists in sequence: 🧭 Planner → 🔎 Retriever → 🛒 DataAgent → 🕵️ Critic → 🛡️ Judge, with a revision loop from Critic back to DataAgent on REJECT, and every run appended to the Trace log
 - **Tools & Data** — DataAgent's tool calls pass through a human-in-the-loop Approval Gate before reaching the MCP server, which reads from `retail.parquet`
 
+## Sample run — the system catching itself
+
+![Sample run with guardrails flagging a logical error](assets/sample-run.png)
+
+A user asks for *"the most ordered product in 2010, UK vs the rest of the world."* The DataAgent compares UK against "Global (All Countries)" — but the **LLM judge catches that 'Global' includes the UK itself**, making the comparison logically invalid. The system refuses to ship the bad answer.
+
+This is the entire point of having guardrails: most agent demos only show happy paths, but the interesting failure modes are semantic ones a single agent can't see in itself.
+
+**91.5s · $0.07 · 7 delegations** (planner + 3 data + 2 critic + judge) **· 100% cache hit · DataAgent ate 58% of the budget** — exactly what per-agent cost attribution exists to surface.
+
 ## Patterns implemented
 
 | Pattern | Where | Phase |
