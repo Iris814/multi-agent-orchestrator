@@ -1,0 +1,29 @@
+# Core agent SDK
+claude-agent-sdk
+anthropic
+python-dotenv
+
+# Data
+pandas
+pyarrow
+openpyxl
+
+# ML / Stats
+scikit-learn
+plotly
+
+# Notebooks
+jupyter
+jupyterlab
+nest_asyncio
+
+# Validation & UI
+pydantic>=2
+streamlit
+
+# Vector DB for RAG (Phase 5)
+chromadb
+
+# Dev
+pytest
+pytest-asyncio

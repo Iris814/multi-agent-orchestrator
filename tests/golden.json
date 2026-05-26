@@ -1,0 +1,53 @@
+[
+  {
+    "id": "top5-countries-revenue-2010",
+    "question": "What were the top 5 countries by revenue in 2010?",
+    "expected_substrings": [
+      "United Kingdom",
+      "EIRE",
+      "Netherlands",
+      "Germany",
+      "France"
+    ]
+  },
+  {
+    "id": "top5-countries-revenue-2011",
+    "question": "What were the top 5 countries by revenue in 2011?",
+    "expected_substrings": [
+      "United Kingdom",
+      "Netherlands",
+      "EIRE",
+      "Germany",
+      "France"
+    ]
+  },
+  {
+    "id": "top3-countries-revenue-alltime",
+    "question": "What were the top 3 countries by revenue across all years?",
+    "expected_substrings": [
+      "United Kingdom",
+      "EIRE",
+      "Netherlands"
+    ]
+  },
+  {
+    "id": "top5-countries-quantity-2011",
+    "question": "What were the top 5 countries by quantity sold in 2011?",
+    "expected_substrings": [
+      "United Kingdom",
+      "Netherlands",
+      "EIRE",
+      "Germany",
+      "France"
+    ]
+  },
+  {
+    "id": "top3-countries-revenue-2010",
+    "question": "What were the top 3 countries by revenue in 2010?",
+    "expected_substrings": [
+      "United Kingdom",
+      "EIRE",
+      "Netherlands"
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Env vars (NEVER commit your token)
+.env
+.env.local
+
+# Derived data files (regenerable from .xlsx)
+data/retail.parquet
+data/customer_segments.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Runtime artifacts (regenerable; may contain personal Q&A)
+traces/*.jsonl
+memory/long_term.json
+
+# Local Claude Code settings (user-specific paths/permissions)
+.claude/
