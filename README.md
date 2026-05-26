@@ -4,43 +4,13 @@
 
 ## Architecture
 
-```mermaid
-flowchart TB
-    User([User Question]) --> Orch[Orchestrator]
+![The Orchestrator — System Architecture](assets/architecture.svg)
 
-    subgraph Workers
-      Data[DataAgent<br/>query / aggregate]
-      Stats[StatsAgent<br/>RFM / cohort / LTV]
-      Viz[VizAgent<br/>Plotly charts]
-      Critic[CriticAgent<br/>reflection]
-      Narr[NarrativeAgent<br/>exec summary]
-    end
+A user question flows through three tiers:
 
-    Orch -->|delegate| Data
-    Orch -->|delegate| Stats
-    Orch -->|delegate| Viz
-    Orch -->|review| Critic
-    Orch -->|finalize| Narr
-
-    Data <-->|MCP stdio| MCP[(Retail MCP Server)]
-    MCP --> Parquet[(retail.parquet)]
-
-    Orch <-->|read/write| Mem[(Memory<br/>short + long term)]
-    Orch <-->|retrieve| RAG[(RAG: definitions<br/>+ segment labels)]
-
-    Critic -.->|reject| Orch
-    HITL{{Human approval gate<br/>before expensive ops}} -.-> Orch
-
-    Orch --> GR[Guardrails layer<br/>schema + allowlist]
-    GR --> Out([Answer + chart + trace])
-
-    classDef agent fill:#e7f0ff,stroke:#4c7bd9
-    classDef store fill:#fff3e0,stroke:#e68a00
-    classDef guard fill:#ffe5e5,stroke:#cc3333
-    class Orch,Data,Stats,Viz,Critic,Narr agent
-    class Parquet,Mem,RAG,MCP store
-    class GR,HITL guard
-```
+- **Interface** — User · Memory (short-term + long-term) · Final Answer
+- **Orchestrator** — five specialists in sequence: 🧭 Planner → 🔎 Retriever → 🛒 DataAgent → 🕵️ Critic → 🛡️ Judge, with a revision loop from Critic back to DataAgent on REJECT, and every run appended to the Trace log
+- **Tools & Data** — DataAgent's tool calls pass through a human-in-the-loop Approval Gate before reaching the MCP server, which reads from `retail.parquet`
 
 ## Patterns implemented
 
