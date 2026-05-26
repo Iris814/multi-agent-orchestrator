@@ -2,6 +2,8 @@
 
 > A production-style orchestrator-worker multi-agent system for customer analytics, built on the Claude Agent SDK. Designed as a deep exploration of every major pattern in agentic workflows — orchestrator-worker, reflection, planning, hierarchical memory, RAG, MCP, human-in-the-loop, guardrails, and eval-driven development — with measurable rigor (cost, latency, cache hit rate, golden-set pass rate) baked in from Phase 1.
 
+![Live demo of the multi-agent pipeline](assets/demo.gif)
+
 ## Architecture
 
 ![The Orchestrator — System Architecture](assets/architecture.svg)
